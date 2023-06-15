@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    background-color: #DBC7F4;
+}
+
+.container {
+    position: relative;
+    border: 1px solid white;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    height: 38.5rem;
+    padding: 0.5rem;
+    border-radius: 25px;
+
+}
+
+.shownDiv {
+    border: 1px solid white;
+    border-radius: 25px;
+}
+
+.purple {
+    position: relative;
+    height: 19rem;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #974BD5;
+    padding-top: 2rem;
+}
+
+.white {
+    position: relative;
+    height: 18.2rem;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #F9F9F9;
+    padding-top: 5.5rem;
+}
+
+.smallWhite {
+    position: absolute;
+    height: 8rem;
+    width: 19rem;
+    margin-left: 0.6rem;
+    margin-right: 0.3rem;
+    margin-top: -22.5rem;
+    background-color: #FFFFFF;
+    box-shadow: 0 0.5px 0.5px 0.5px rgba(75, 74, 74, 0.5);
+    border-radius: 5px;
+
+}
+
+.purpleFirst {
+    height: 8rem;
+    width: 8rem;
+    border: 1px solid white;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #C69CE7;
+}
+
+.purpleSecond {
+    height: 6rem;
+    width: 6rem;
+    border: 1px solid white;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #C69CE7;
+    margin: 0.9rem;
+}
+
+.purpleThird {
+    height: 5rem;
+    width: 5rem;
+    margin: auto;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0.45rem;
+    display: grid;
+    padding: 0.7rem;
+}
+
+.purpleThird p {
+    font-size: 12px;
+    color: #974BD5;
+    margin-top: 0.5rem;
+    
+}
+
+.purpleThird h2 {
+    font-size: 20px;
+    margin-left: 0.3rem;
+    color: #974BD5;
+
+}
+
+
+.completion p,
+.correct p,
+.numOfQuestion p,
+.wrong p {
+    font-size: 12px;
+    color: rgb(173, 172, 172);
+    margin-top: 0.5rem;
+   
+}
+
+.completion h2,
+.correct h2,
+.numOfQuestion h2,
+.wrong h2 {
+    font-size: 20px;
+    margin-left: 0.3rem;
+    color: #9f73c3;
+   
+}
+
+
+.completion,
+.correct,
+.numOfQuestion,
+.wrong {
+   line-height: normal;
+   
+}
+
+.correct h2 {
+    color: rgb(79, 147, 79);
+}
+
+.wrong h2 {
+    color: rgb(246, 108, 108);
+}
+
+.smallWhite {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.white img {
+    display: flex;
+    height: 7rem;
+    margin: 0 auto;
+}
+
+
