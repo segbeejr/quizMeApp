@@ -49,8 +49,8 @@ body{
 .smallWhite {
     position: absolute;
     height: 8rem;
-    width: 16rem;
-    margin-left: 0.4rem;
+    width: 93%;
+    margin-left: 0.6rem;
     margin-right: 0.3rem;
     margin-top: -19.5rem;
     background-color: #FFFFFF;
@@ -155,5 +155,3 @@ body{
     height: 7rem;
     margin: 0 auto;
 }
-
-

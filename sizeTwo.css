@@ -1,0 +1,20 @@
+.container {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    height: auto;
+  }
+  
+  .smallWhite {
+    position: absolute;
+    margin: 1rem 0;
+    height: auto;
+    width: 95%;
+    margin-left: 0.8rem;
+    margin-top: -19.5rem;
+  }
+  
+  .white img {
+    height: 8rem;
+    width: 8rem;
+  }
+  
