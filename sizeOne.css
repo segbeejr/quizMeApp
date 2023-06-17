@@ -1,59 +1,88 @@
 .container {
-    margin-left: 0.3rem;
-    margin-right: 0.3rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .purple,
-  .white {
-    height: 15.5rem;
-    padding-top: 3rem;
-    border-radius: 10px;
-  }
-  
-  .smallWhite {
-    margin: 0.5rem 0;
-    height: 6.5rem;
-    width: 92% auto;
-    margin-top: -19rem;
-    margin-left: 0.52rem;
-  }
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.5rem;
+  height: 84vh;
+}
 
-  .white img {
-    margin-top: 2rem;
-  }
+.purple,
+.white {
+  height: 41vh;
+  padding-top: 3rem;
+  border-radius: 10px;
+  
+}
 
-  /* .purpleFirst {
-    height: 8rem;
-    width: 8rem;
-    border: 1px solid white;
-    margin: auto;
-    border-radius: 50%;
-    background-color: #C69CE7;
-} */
-  
-  /* .purpleFirst,
-  .purpleSecond {
-    height: 5rem;
-    width: 5rem;
-  }
-  
-  .purpleThird {
-    height: 4rem;
-    width: 4rem;
-    margin-top: 0.25rem;
-    padding: 0.5rem;
-  } */
-  
-  .completion p,
-  .correct p,
-  .numOfQuestion p,
-  .wrong p,
-  .completion h2,
-  .correct h2,
-  .numOfQuestion h2,
-  .wrong h2 {
-    font-size: 10px;
-  }
-  
+.smallWhite {
+  margin: 0.5rem 0;
+  height: 7.5rem;
+  width: 92% auto;
+  margin-top: -27.5rem;
+  margin-left: 0.52rem;
+}
+
+.white img {
+  margin-top: 2rem;
+}
+
+.purpleFirst {
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid white;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #C69CE7;
+}
+
+
+.purpleSecond {
+  height: 8rem;
+  width: 8rem;
+}
+
+.purpleThird {
+  height: 7rem;
+  width: 7rem;
+  padding: 0.5rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.completion p,
+.correct p,
+.numOfQuestion p,
+.wrong p,
+.completion h2,
+.correct h2,
+.numOfQuestion h2,
+.wrong h2 {
+  font-size: 10px;
+}
+
+
+.answer-div {
+  border: 1px solid #974BD5;
+  height: 2rem;
+  margin: 0.7rem;
+  border-radius: 10px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.question-div {
+  border: 1px solid #974BD5;
+  height: 4rem;
+  border-radius: 10px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.image-div a {
+  text-decoration: none;
+  color: white;
+  margin-left: 1.5rem;
+  position: absolute;
+  margin-top: -4rem;
+}
