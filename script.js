@@ -100,52 +100,58 @@ const questions = [
       options: ["Kind", "Greedy", "Friendly", "Helpful"],
       answer: 0,
     },
-  ];
+];
   
   
-let currentQuestionIndex = 0;
-let score = 0;
-let numCorrect = 0;
-let numWrong = 0;
-let percentComplete = 0;
-let timerInterval;
-
-
-function shuffleQuestions() {
-  for (let i = questions.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [questions[i], questions[j]] = [questions[j], questions[i]];
+  
+  let currentQuestionIndex = 0;
+  let score = 0;
+  let numCorrect = 0;
+  let numWrong = 0;
+  let percentComplete = 0;
+  let timerInterval;
+  
+  
+  function shuffleQuestions() {
+    for (let i = questions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
   }
-}
-
-
-function displayQuestion() {
-  const questionDiv = document.querySelector(".question-div");
-  const answerDiv = document.querySelector(".answer-div");
-
-  const currentQuestion = questions[currentQuestionIndex];
-
-  questionDiv.textContent = currentQuestion.question;
-
-  let optionsHTML = "";
-  for (let i = 0; i < currentQuestion.options.length; i++) {
-    optionsHTML += `
-      <div class="option">
-        <input type="radio" id="option${i}" name="option" value="${i}">
-        <label for="option${i}">${currentQuestion.options[i]}</label>
-      </div>
-    `;
+  
+  function displayQuestion() {
+    const questionDiv = document.querySelector(".question-div");
+    const answerDiv = document.querySelector(".answer-div");
+  
+    const currentQuestion = questions[currentQuestionIndex];
+  
+    questionDiv.textContent = currentQuestion.question;
+  
+    let optionsHTML = "";
+    for (let i = 0; i < currentQuestion.options.length; i++) {
+      optionsHTML += `
+        <div class="option">
+          <input type="radio" id="option${i}" name="option" value="${i}">
+          <label for="option${i}">${currentQuestion.options[i]}</label>
+        </div>
+      `;
+    }
+    answerDiv.innerHTML = optionsHTML;
+  
+    // Add event listener to answer options after they are generated
+    const answerOptions = document.querySelectorAll('input[name="option"]:checked');
+    answerOptions.forEach((option) => {
+      option.addEventListener("click", handleAnswerSubmission);
+    });
   }
-  answerDiv.innerHTML = optionsHTML;
-}
-
-function handleAnswerSubmission(event) {
+  
+  function handleAnswerSubmission(event) {
     event.preventDefault();
   
     const selectedOption = document.querySelector('input[name="option"]:checked');
   
     if (!selectedOption) {
-      return; 
+      return;
     }
   
     const selectedOptionIndex = parseInt(selectedOption.value);
@@ -162,113 +168,107 @@ function handleAnswerSubmission(event) {
     updatePercentComplete();
     updateNumberCorrect();
     updateWrongQuestions();
-
-
   
-    
     const submitButton = document.querySelector(".submit-button");
     submitButton.removeEventListener("click", handleAnswerSubmission);
   
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
-      setTimeout(displayQuestion, 1000); 
+      setTimeout(displayQuestion, 1000);
     } else {
       clearInterval(timerInterval);
       endGame();
     }
   }
-
-
-
-function updateScore() {
-  const scoreElement = document.getElementById("score");
-  scoreElement.textContent = `${score}pt`;
-}
-
-
-function updatePercentComplete() {
-  percentComplete = (currentQuestionIndex / questions.length) * 100;
-  const percentCompleteElement = document.getElementById("percentComplete");
-  percentCompleteElement.textContent = `${percentComplete}%`;
-}
-
-
-function updateNumberCorrect() {
-  const numberCorrectElement = document.getElementById("numberCorrect");
-  numberCorrectElement.textContent = numCorrect;
-}
-
-
-function updateTotalQuestions() {
-  const totalQuestionElement = document.getElementById("totalQuestion");
-  totalQuestionElement.textContent = questions.length;
-}
-
-
-function updateWrongQuestions() {
-  const wrongQuestionElement = document.getElementById("wrongQuestion");
-  wrongQuestionElement.textContent = numWrong;
-}
-
-
-function endGame() {
-  const congratsElement = document.querySelector(".congrats");
-  const sorryElement = document.querySelector(".sorry");
-
-  if (currentQuestionIndex === questions.length) {
-    congratsElement.classList.remove("show");
-    congratsElement.textContent = "Congratulations!";
-    congratsElement.classList.add("show");
-  } else {
-    sorryElement.classList.remove("show");
-    sorryElement.textContent = "Sorry!! Please try again";
-    sorryElement.classList.add("show");
+  
+  function updateScore() {
+    const scoreElement = document.getElementById("score");
+    scoreElement.textContent = `${score}pt`;
   }
-
-  updateScore();
-
   
-  setTimeout(() => {
-    window.location.href = "./index.html";
-  }, 3000);
-}
-
-
-function startGame() {
-  shuffleQuestions();
-  displayQuestion();
-  updateScore();
-  updatePercentComplete();
-  updateNumberCorrect();
-  updateTotalQuestions();
-  updateWrongQuestions();
-
+  function updatePercentComplete() {
+    percentComplete = (currentQuestionIndex / questions.length) * 100;
+    const percentCompleteElement = document.getElementById("percentComplete");
+    percentCompleteElement.textContent = `${percentComplete}%`;
+  }
   
-  let secondsLeft = 360;
-  const timerElement = document.getElementById("timer");
-
-  function updateTimer() {
-    const minutes = Math.floor(secondsLeft / 60);
-    const seconds = secondsLeft % 60;
-    timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-      endGame();
+  function updateNumberCorrect() {
+    const numberCorrectElement = document.getElementById("numberCorrect");
+    numberCorrectElement.textContent = numCorrect;
+  }
+  
+  function updateTotalQuestions() {
+    const totalQuestionElement = document.getElementById("totalQuestion");
+    totalQuestionElement.textContent = questions.length;
+  }
+  
+  function updateWrongQuestions() {
+    const wrongQuestionElement = document.getElementById("wrongQuestion");
+    wrongQuestionElement.textContent = numWrong;
+  }
+  
+  function endGame() {
+    const congratsElement = document.querySelector(".congrats");
+    const sorryElement = document.querySelector(".sorry");
+  
+    if (currentQuestionIndex === questions.length) {
+      congratsElement.classList.remove("show");
+      congratsElement.textContent = "Congratulations!";
+      congratsElement.classList.add("show");
     } else {
-      secondsLeft--;
+      sorryElement.classList.remove("show");
+      sorryElement.textContent = "Sorry!! Please try again";
+      sorryElement.classList.add("show");
     }
+  
+    updateScore();
+  
+    setTimeout(() => {
+      window.location.href = "./index.html";
+    }, 3000);
   }
-
-  updateTimer();
-  timerInterval = setInterval(updateTimer, 1000);
-}
-
-
-const restartButton = document.querySelector(".ri-restart-line");
-restartButton.addEventListener("click", () => {
-  window.location.href = "./questions.html";
-});
-
-
-window.addEventListener("load", startGame);
+  
+  function startGame() {
+    shuffleQuestions();
+    displayQuestion();
+    updateScore();
+    updatePercentComplete();
+    updateNumberCorrect();
+    updateTotalQuestions();
+    updateWrongQuestions();
+  
+    let secondsLeft = 360;
+    const timerElement = document.getElementById("timer");
+  
+    function updateTimer() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  
+      if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+        endGame();
+      } else {
+        secondsLeft--;
+      }
+    }
+  
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+  
+  const restartButton = document.querySelector(".ri-restart-line");
+  restartButton.addEventListener("click", () => {
+    window.location.href = "./questions.html";
+  });
+  
+  window.addEventListener("load", startGame);
+  
+  // Added code for handling answer submission on option click
+  const answerOptions = document.querySelectorAll('input[name="option"]');
+  answerOptions.forEach((option) => {
+    option.addEventListener("click", (event) => {
+      handleAnswerSubmission(event);
+    });
+  });
+  

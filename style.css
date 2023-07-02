@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body{
     background-color: #DBC7F4;
 }
@@ -37,25 +36,59 @@ body{
 }
 
 .white {
-    position: relative;
     height: 40vh;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     background-color: #F9F9F9;
-    padding-top: 6rem;
+    padding-top: 2rem;
 }
 
-.smallWhite {
-    position: absolute;
-    height: 8rem;
-    width: 93%;
-    margin-left: 0.6rem;
-    margin-right: 0.3rem;
-    margin-top: -27rem;
-    background-color: #FFFFFF;
-    box-shadow: 0 0.5px 0.5px 0.5px rgba(75, 74, 74, 0.5);
-    border-radius: 5px;
+.newDiv {
+    display: flex;
+    width: 100%;
+    padding: 2rem;
+    background-color: #C69CE7;
+    color: black;
+}
 
+.newInnerDiv2  {
+    color: black;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.newInnerDiv3 {
+    color: black;
+    width: 100%;
+    display: grid;
+    justify-content: right;
+}
+
+.newInnerDiv1 {
+    color: black;
+    width: 100%;
+    display: grid;
+    justify-content: left;
+}
+
+.completion p,
+.correct p,
+.numOfQuestion p,
+.wrong p {
+    font-size: 12px;
+    color: black;
+    margin-top: 0.5rem;
+}
+
+#percentComplete,
+#numberCorrect,
+#totalQuestion,
+#wrongQuestion {
+    font-size: 12px;
+    color: black;
+    margin-top: 0.5rem;
+    /* border: 1px solid white; */
 }
 
 .purpleFirst {
@@ -101,15 +134,6 @@ body{
 }
 
 
-.completion p,
-.correct p,
-.numOfQuestion p,
-.wrong p {
-    font-size: 12px;
-    color: rgb(173, 172, 172);
-    margin-top: 0.5rem;
-   
-}
 
 .completion h2,
 .correct h2,
@@ -118,16 +142,13 @@ body{
     font-size: 20px;
     margin-left: 0.3rem;
     color: #9f73c3;
-   
 }
-
 
 .completion,
 .correct,
 .numOfQuestion,
 .wrong {
    line-height: normal;
-   
 }
 
 .correct h2 {
@@ -141,17 +162,11 @@ body{
 .smallWhite {
     display: flex;
     justify-content: space-between;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
-
-.white img {
-    display: flex;
-    height: 8.5rem;
-    margin: 0 auto;
-}
 
 .answer-div {
     height: 2rem;
@@ -169,12 +184,22 @@ body{
     margin-right: 1rem;
 }
 
-.image-div a {
+.white #welcome,
+.white a {
+    margin-left: 10rem;
     text-decoration: none;
     color: white;
-    margin-left: 1.5rem;
     position: absolute;
-    margin-top: -4rem;
+    margin-top: 6rem;
+}
+
+.white a {
+    margin-left: 15rem;
+}
+
+.white #welcome {
+    color: #974BD5;
+    margin-top: 1.5rem;
 }
 
 .purpleTop {
@@ -186,53 +211,56 @@ body{
     color: white;
     position: absolute;
     margin-left: -2.5rem;
+}
+
+.purpleTop .ri-arrow-left-line {
+    color: white;
+    position: absolute;
+    padding-left: 1rem;
     margin-top: -4rem;
 }
 
 .hidden {
     display: none;
-  }
-
-
+}
 
 .congrats,
 .sorry {
-  display: none;
-  background-color: white;
-  color: black;
-  font-size: 24px;
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 20px;
+    display: none;
+    background-color: white;
+    color: black;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .congrats.show,
 .sorry.show {
-  display: block;
+    display: block;
 }
 
 .question-div,
 .answer-div {
-  padding: 10px;
+    padding: 10px;
 }
 
 .option {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 input[type="checkbox"] {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 #timer {
-  font-size: 32px;
-  text-align: center;
-  margin: 0;
-  padding: 10px;
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
 }
-
 
 .english {
     position: absolute;
@@ -242,4 +270,149 @@ input[type="checkbox"] {
 
 .english h3 {
     color: #974BD5;
+}
+
+.submit-button {
+   display: flex;
+   justify-content: right;
+   padding-right: 10px;
+}
+
+.white .welcomeDiv #welcome {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    width: 100%;
+}
+
+.white .welcomeDiv a {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    width: 100%;
+    padding-top: 4rem;
+}
+
+#submit-button {
+    height: 2rem;
+    width: 6rem;
+    background-color: #974BD5;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Media Queries */
+
+/* Small screens */
+@media screen and (max-width: 767px) {
+    .container {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+  
+    .smallWhite {
+        height: 6rem;
+        margin-top: -18rem;
+    }
+  
+    .white #welcome,
+    .white a {
+        margin-left: 5rem;
+    }
+  
+    .white a {
+        margin-left: 10rem;
+    }
+  
+    .purpleTop .ri-restart-line {
+        margin-left: -1.5rem;
+        margin-top: -4rem;
+    }
+  
+    .english {
+        margin-left: 6.5rem;
+        margin-top: 1rem;
+    }
+  
+    .submit-button {
+        padding-left: 20rem;
+    }
+}
+
+/* Medium screens */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+  
+    .smallWhite {
+        height: 7rem;
+        margin-top: -21rem;
+    }
+  
+    .white #welcome,
+    .white a {
+        margin-left: 8rem;
+    }
+  
+    .white a {
+        margin-left: 13rem;
+    }
+  
+    .purpleTop .ri-restart-line {
+        margin-left: -2rem;
+        margin-top: -3.5rem;
+    }
+  
+    .english {
+        margin-left: 8.5rem;
+        margin-top: 1.5rem;
+    }
+  
+    .submit-button {
+        padding-left: 24rem;
+    }
+}
+
+/* Large screens */
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+  
+    .smallWhite {
+        height: 8rem;
+        margin-top: -24rem;
+    }
+  
+    .white #welcome,
+    .white a {
+        margin-left: 10rem;
+    }
+  
+    .white a {
+        margin-left: 15rem;
+    }
+  
+    .purpleTop .ri-restart-line {
+        margin-left: -2.5rem;
+        margin-top: -4rem;
+    }
+  
+    .english {
+        margin-left: 12.5rem;
+        margin-top: 2rem;
+    }
+  
+    .submit-button {
+        padding-left: 28rem;
+    }
 }

@@ -6,8 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./sizeOne.css" media="(max-width: 480px)">
-    <link rel="stylesheet" href="./sizeTwo.css" media="(min-width: 768px)">
     <title>QuizMe App</title>
 </head>
 <body>
@@ -29,10 +27,42 @@
                     <div class="purpleSecond">
                         <div class="purpleThird">
                             <p>Your Timer</p>
-                            <h2 id="timer">0:00</h2>
+                            <div id="timer">0:00</div>
                         </div>
                     </div>
                 </div>
+                
+
+
+                <div class="newDiv">
+                    <div class="newInnerDiv1">
+                        <div class="completion">
+                            <div id="percentComplete"></div>
+                            <p>Completion</p>
+                        </div>
+                        <div class="correct">
+                            <div id="numberCorrect"></div>
+                            <p>Correct</p>
+                        </div>
+                    </div>
+
+                    <div class="newInnerDiv2">
+                        <h3>English Quiz</h3>
+                    </div>
+
+                    <div class="newInnerDiv3">
+                        <div class="numOfQuestion">
+                            <div id="totalQuestion"></div>
+                            <p>Total Question</p>
+                        </div>
+                        <div class="wrong">
+                            <div id="wrongQuestion"></div>
+                            <p>Wrong</p>
+                        </div>
+                    </div>
+                </div>
+
+                
             </div>
 
             <div class="white">
@@ -42,36 +72,13 @@
                 <div class="answer-div"></div>
                 <div class="answer-div"></div>
                 <div class="answer-div"></div>
-            </div>
-
-            <div class="smallWhite">
-                <div class="firstGrid">
-                    <div class="completion">
-                        <h2 id="percentComplete">0%</h2>
-                        <p>Completion</p>
-                    </div>
-                    <div class="correct">
-                        <h2 id="numberCorrect">0</h2>
-                        <p>Correct</p>
-                    </div>
-                </div>
-
-                <div class="english">
-                    <h3>English Quiz</h3>
-                </div>
-
-                <div class="secondGrid">
-                    <div class="numOfQuestion">
-                        <h2 id="totalQuestion">0</h2>
-                        <p>Total Question</p>
-                    </div>
-                    <div class="wrong">
-                        <h2 id="wrongQuestion">0</h2>
-                        <p>Wrong</p>
-                    </div>
-                </div>
                 
+                <div class="submit-button">
+                    <button id="submit-button">Submit</button>
+                </div>
             </div>
+
+    
 
             
         </div>
@@ -82,6 +89,10 @@
 
 
     </div>
+
+
+
+    
     <script src="./script.js"></script>
 </body>
 </html>
