@@ -25,7 +25,7 @@ body{
 }
 
 .purple {
-    position: relative;
+    /* position: relative; */
     height: 40vh;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -49,6 +49,7 @@ body{
     padding: 2rem;
     background-color: #C69CE7;
     color: black;
+
 }
 
 .newInnerDiv2  {
@@ -182,6 +183,10 @@ body{
     border-radius: 10px;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.white {
+    position: static;
 }
 
 .white #welcome,

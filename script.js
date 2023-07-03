@@ -104,131 +104,115 @@ const questions = [
   
   
   
-  let currentQuestionIndex = 0;
-  let score = 0;
-  let numCorrect = 0;
-  let numWrong = 0;
-  let percentComplete = 0;
-  let timerInterval;
-  
-  
-  function shuffleQuestions() {
+ 
+let currentQuestionIndex = 0;
+let score = 0;
+let numCorrect = 0;
+let numWrong = 0;
+let percentComplete = 0;
+let timerInterval;
+
+function shuffleQuestions() {
     for (let i = questions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [questions[i], questions[j]] = [questions[j], questions[i]];
+        const j = Math.floor(Math.random() * (i + 1));
+        [questions[i], questions[j]] = [questions[j], questions[i]];
     }
-  }
-  
-  function displayQuestion() {
+}
+
+function displayQuestion() {
     const questionDiv = document.querySelector(".question-div");
     const answerDiv = document.querySelector(".answer-div");
-  
+
     const currentQuestion = questions[currentQuestionIndex];
-  
+
     questionDiv.textContent = currentQuestion.question;
-  
+
     let optionsHTML = "";
     for (let i = 0; i < currentQuestion.options.length; i++) {
-      optionsHTML += `
-        <div class="option">
-          <input type="radio" id="option${i}" name="option" value="${i}">
-          <label for="option${i}">${currentQuestion.options[i]}</label>
-        </div>
-      `;
+        optionsHTML += `
+            <div class="option">
+                <input type="radio" id="option${i}" name="option" value="${i}">
+                <label for="option${i}">${currentQuestion.options[i]}</label>
+            </div>
+        `;
     }
     answerDiv.innerHTML = optionsHTML;
-  
-    // Add event listener to answer options after they are generated
-    const answerOptions = document.querySelectorAll('input[name="option"]:checked');
-    answerOptions.forEach((option) => {
-      option.addEventListener("click", handleAnswerSubmission);
-    });
-  }
-  
-  function handleAnswerSubmission(event) {
-    event.preventDefault();
-  
+}
+
+function handleAnswerSubmission() {
     const selectedOption = document.querySelector('input[name="option"]:checked');
-  
+
     if (!selectedOption) {
-      return;
+        return;
     }
-  
+
     const selectedOptionIndex = parseInt(selectedOption.value);
     const currentQuestion = questions[currentQuestionIndex];
-  
+
     if (selectedOptionIndex === currentQuestion.answer) {
-      score += 5;
-      numCorrect++;
+        score += 5;
+        numCorrect++;
     } else {
-      numWrong++;
+        numWrong++;
     }
-  
-    updateScore();
-    updatePercentComplete();
-    updateNumberCorrect();
-    updateWrongQuestions();
-  
-    const submitButton = document.querySelector(".submit-button");
-    submitButton.removeEventListener("click", handleAnswerSubmission);
-  
+
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
-      setTimeout(displayQuestion, 1000);
+        displayQuestion();
     } else {
-      clearInterval(timerInterval);
-      endGame();
+        clearInterval(timerInterval);
+        endGame();
     }
-  }
-  
-  function updateScore() {
+}
+
+function updateScore() {
     const scoreElement = document.getElementById("score");
     scoreElement.textContent = `${score}pt`;
-  }
-  
-  function updatePercentComplete() {
+}
+
+function updatePercentComplete() {
     percentComplete = (currentQuestionIndex / questions.length) * 100;
     const percentCompleteElement = document.getElementById("percentComplete");
     percentCompleteElement.textContent = `${percentComplete}%`;
-  }
-  
-  function updateNumberCorrect() {
+}
+
+function updateNumberCorrect() {
     const numberCorrectElement = document.getElementById("numberCorrect");
     numberCorrectElement.textContent = numCorrect;
-  }
-  
-  function updateTotalQuestions() {
+}
+
+function updateTotalQuestions() {
     const totalQuestionElement = document.getElementById("totalQuestion");
     totalQuestionElement.textContent = questions.length;
-  }
-  
-  function updateWrongQuestions() {
+}
+
+function updateWrongQuestions() {
     const wrongQuestionElement = document.getElementById("wrongQuestion");
     wrongQuestionElement.textContent = numWrong;
-  }
-  
-  function endGame() {
+}
+
+function endGame() {
     const congratsElement = document.querySelector(".congrats");
     const sorryElement = document.querySelector(".sorry");
-  
+
     if (currentQuestionIndex === questions.length) {
-      congratsElement.classList.remove("show");
-      congratsElement.textContent = "Congratulations!";
-      congratsElement.classList.add("show");
+        congratsElement.classList.remove("show");
+        congratsElement.textContent = "Congratulations!";
+        congratsElement.classList.add("show");
     } else {
-      sorryElement.classList.remove("show");
-      sorryElement.textContent = "Sorry!! Please try again";
-      sorryElement.classList.add("show");
+        sorryElement.classList.remove("show");
+        sorryElement.textContent = "Sorry!! Please try again";
+        sorryElement.classList.add("show");
     }
-  
+
     updateScore();
-  
+
     setTimeout(() => {
-      window.location.href = "./index.html";
+        window.location.reload();
     }, 3000);
-  }
-  
-  function startGame() {
+}
+
+function startGame() {
     shuffleQuestions();
     displayQuestion();
     updateScore();
@@ -236,39 +220,34 @@ const questions = [
     updateNumberCorrect();
     updateTotalQuestions();
     updateWrongQuestions();
-  
+
     let secondsLeft = 360;
     const timerElement = document.getElementById("timer");
-  
+
     function updateTimer() {
-      const minutes = Math.floor(secondsLeft / 60);
-      const seconds = secondsLeft % 60;
-      timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-  
-      if (secondsLeft === 0) {
-        clearInterval(timerInterval);
-        endGame();
-      } else {
-        secondsLeft--;
-      }
+        const minutes = Math.floor(secondsLeft / 60);
+        const seconds = secondsLeft % 60;
+        timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            endGame();
+        } else {
+            secondsLeft--;
+        }
     }
-  
+
     updateTimer();
     timerInterval = setInterval(updateTimer, 1000);
-  }
-  
-  const restartButton = document.querySelector(".ri-restart-line");
-  restartButton.addEventListener("click", () => {
-    window.location.href = "./questions.html";
-  });
-  
-  window.addEventListener("load", startGame);
-  
-  // Added code for handling answer submission on option click
-  const answerOptions = document.querySelectorAll('input[name="option"]');
-  answerOptions.forEach((option) => {
-    option.addEventListener("click", (event) => {
-      handleAnswerSubmission(event);
-    });
-  });
+}
+
+const submitButton = document.getElementById("submit-button");
+submitButton.addEventListener("click", handleAnswerSubmission);
+
+const restartButton = document.querySelector(".ri-restart-line");
+restartButton.addEventListener("click", () => {
+    window.location.reload();
+});
+
+window.addEventListener("load", startGame);
   
